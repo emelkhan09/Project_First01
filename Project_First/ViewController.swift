@@ -20,7 +20,9 @@ class ListController: UICollectionViewController {
         collectionView.collectionViewLayout =
           UICollectionViewCompositionalLayout.list(using: config)
     }
-
+    private enum Sector: CaseIterable {
+        case main
+    }
 
 }
 

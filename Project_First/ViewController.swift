@@ -9,10 +9,16 @@
 import UIKit
 
 class ListController: UICollectionViewController {
-
+    
+    var repositaries = ["Alamofire","Realm","KingFisher","SnapKit"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var config = UICollectionLayoutListConfiguration(appearance:
+          .insetGrouped)
+        config.backgroundColor = .systemPurple
+        collectionView.collectionViewLayout =
+          UICollectionViewCompositionalLayout.list(using: config)
     }
 
 

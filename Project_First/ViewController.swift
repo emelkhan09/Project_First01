@@ -40,17 +40,13 @@ class ListController: UICollectionViewController {
           dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
         }
         
+        private func createLayout() {
         var config = UICollectionLayoutListConfiguration(appearance:
           .insetGrouped)
         config.backgroundColor = .systemPurple
         collectionView.collectionViewLayout =
           UICollectionViewCompositionalLayout.list(using: config)
-        
-
-        
-
-
-}
+        }
    
-
+}
 

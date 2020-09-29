@@ -10,10 +10,11 @@ import UIKit
 
 final class SearchViewController: UIViewController {
     
-    private var repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
     private enum Section: CaseIterable {
-    case main
+        case main
     }
+    
+    private var repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
     
     private lazy var collectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -28,7 +29,7 @@ final class SearchViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var dataSource: UICollectionViewDiffableDataSource<Section, [String]> = {
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Section, String> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, [String]>
           { cell, indexPath, repository in
             var content = cell.defaultContentConfiguration()
@@ -37,7 +38,7 @@ final class SearchViewController: UIViewController {
         }
 
 
-    return UICollectionViewDiffableDataSource<Section, [String]>(collectionView: collectionView)
+    return UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView)
       { (collectionView, indexPath, repository) -> UICollectionViewCell? in
     collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: repository)
       }
@@ -48,22 +49,5 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         title = "Search"
-        applySnapshot(animatingDifferences: false)
     }
-        private func applySnapshot(animatingDifferences: Bool = true) {
-          var snapshot = NSDiffableDataSourceSnapshot<Section, [String]>()
-          snapshot.appendSections(Section.allCases)
-          snapshot.appendItems(repositories)
-          dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
-        }
-        
-        private func createLayout() {
-        var config = UICollectionLayoutListConfiguration(appearance:
-          .insetGrouped)
-        config.backgroundColor = .systemPurple
-        collectionView.collectionViewLayout =
-          UICollectionViewCompositionalLayout.list(using: config)
-        }
-   
 }
-

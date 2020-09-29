@@ -10,7 +10,7 @@ import UIKit
 
 final class SearchViewController: UIViewController {
     
-    var repositaries = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
+    private var repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
     private enum Section: CaseIterable {
     case main
     }
@@ -30,16 +30,16 @@ final class SearchViewController: UIViewController {
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, [String]> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, [String]>
-          { cell, indexPath, repositary in
+          { cell, indexPath, repository in
             var content = cell.defaultContentConfiguration()
-            content.text = repositary
+            content.text = repository
             cell.contentConfiguration = content
         }
 
 
     return UICollectionViewDiffableDataSource<Section, [String]>(collectionView: collectionView)
-      { (collectionView, indexPath, repositary) -> UICollectionViewCell? in
-    collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: repositary)
+      { (collectionView, indexPath, repository) -> UICollectionViewCell? in
+    collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: repository)
       }
     }()
 
@@ -53,7 +53,7 @@ final class SearchViewController: UIViewController {
         private func applySnapshot(animatingDifferences: Bool = true) {
           var snapshot = NSDiffableDataSourceSnapshot<Section, [String]>()
           snapshot.appendSections(Section.allCases)
-          snapshot.appendItems(repositaries)
+          snapshot.appendItems(repositories)
           dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
         }
         

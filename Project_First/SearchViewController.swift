@@ -23,11 +23,11 @@ final class SearchViewController: UIViewController {
         let collectionView = UICollectionView(
             frame: view.bounds,
             collectionViewLayout: layout
-        )
+    )
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         return collectionView
-    }()
+        }()
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, String> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String>
@@ -42,9 +42,8 @@ final class SearchViewController: UIViewController {
     return UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView)
       { (collectionView, indexPath, repository) -> UICollectionViewCell? in
     collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: repository)
-      }
-    }()
-
+    }
+        }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +55,7 @@ final class SearchViewController: UIViewController {
                   snapshot.appendSections(Section.allCases)
                   snapshot.appendItems(repositories)
                   dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
-                }
+        }
         applySnapshot()
     }
 }

@@ -8,12 +8,26 @@
 
 import UIKit
 
-class SearchViewController: UICollectionViewController {
+final class SearchViewController: UIViewController {
     
     var repositaries = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
     private enum Section: CaseIterable {
     case main
     }
+    
+    private lazy var collectionView: UICollectionView = {
+        let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        let layout = UICollectionViewCompositionalLayout.list(using: config)
+
+        let collectionView = UICollectionView(
+            frame: view.bounds,
+            collectionViewLayout: layout
+        )
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        return collectionView
+    }()
+    
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, [String]> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, [String]>
           { cell, indexPath, repositary in
@@ -32,6 +46,9 @@ class SearchViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(collectionView)
+        title = "Search"
+        applySnapshot(animatingDifferences: false)
     }
         private func applySnapshot(animatingDifferences: Bool = true) {
           var snapshot = NSDiffableDataSourceSnapshot<Section, [String]>()

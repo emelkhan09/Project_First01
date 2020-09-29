@@ -58,4 +58,14 @@ final class SearchViewController: UIViewController {
         }
         applySnapshot()
     }
+    
 }
+    private extension SearchViewController {
+    func applySnapshot(animatingDifferences: Bool = false) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
+        snapshot.appendSections(Section.allCases)
+        snapshot.appendItems(repositories)
+        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
+}
+    

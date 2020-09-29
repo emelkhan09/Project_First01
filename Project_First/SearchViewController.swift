@@ -14,7 +14,7 @@ final class SearchViewController: UIViewController {
         case main
     }
     
-    private var repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
+    private let repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
     
     private lazy var collectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -31,10 +31,11 @@ final class SearchViewController: UIViewController {
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, String> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, [String]>
-          { cell, indexPath, repository in
+          { cell, _, repository in
             var content = cell.defaultContentConfiguration()
             content.text = repository
             cell.contentConfiguration = content
+            cell.accessories = [.disclosureIndicator()]
         }
 
 

@@ -49,13 +49,6 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         title = "Search"
-        
-        func applySnapshot(animatingDifferences: Bool = false) {
-            var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-            snapshot.appendSections(Section.allCases)
-            snapshot.appendItems(repositories)
-            dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
-        }
         applySnapshot()
     }
     

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ListController: UICollectionViewController {
+class SearchViewController: UICollectionViewController {
     
-    var repositaries = ["Alamofire","Realm","KingFisher","SnapKit"]
+    var repositaries = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
     private enum Section: CaseIterable {
     case main
     }

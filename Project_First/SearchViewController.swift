@@ -49,7 +49,6 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         title = "Search"
-        applySnapshot()
         applySnapshot(animatingDifferences: false)
         
     }

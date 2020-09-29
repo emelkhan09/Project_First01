@@ -19,48 +19,48 @@ final class SearchViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         let layout = UICollectionViewCompositionalLayout.list(using: config)
-
+        
         let collectionView = UICollectionView(
             frame: view.bounds,
             collectionViewLayout: layout
-    )
+        )
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
+        
         return collectionView
-        }()
+    }()
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, String> = {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String>
-          { cell, _, repository in
+        { cell, _, repository in
             var content = cell.defaultContentConfiguration()
             content.text = repository
             cell.contentConfiguration = content
             cell.accessories = [.disclosureIndicator()]
         }
-
-
-    return UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView)
-      { (collectionView, indexPath, repository) -> UICollectionViewCell? in
-    collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: repository)
-    }
-        }()
-
+        
+        
+        return UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView)
+        { (collectionView, indexPath, repository) -> UICollectionViewCell? in
+            collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: repository)
+        }
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         title = "Search"
         
         func applySnapshot(animatingDifferences: Bool = false) {
-                  var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-                  snapshot.appendSections(Section.allCases)
-                  snapshot.appendItems(repositories)
-                  dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+            var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
+            snapshot.appendSections(Section.allCases)
+            snapshot.appendItems(repositories)
+            dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
         }
         applySnapshot()
     }
     
 }
-    private extension SearchViewController {
+private extension SearchViewController {
     func applySnapshot(animatingDifferences: Bool = false) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
         snapshot.appendSections(Section.allCases)
@@ -68,4 +68,4 @@ final class SearchViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 }
-    
+

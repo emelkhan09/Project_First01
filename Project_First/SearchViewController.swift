@@ -30,7 +30,7 @@ final class SearchViewController: UIViewController {
     }()
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, String> = {
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, [String]>
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, String>
           { cell, _, repository in
             var content = cell.defaultContentConfiguration()
             content.text = repository
@@ -50,5 +50,13 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         title = "Search"
+        
+        func applySnapshot(animatingDifferences: Bool = false) {
+                  var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
+                  snapshot.appendSections(Section.allCases)
+                  snapshot.appendItems(repositories)
+                  dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+                }
+        applySnapshot()
     }
 }

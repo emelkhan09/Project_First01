@@ -14,6 +14,7 @@ final class SearchViewController: UIViewController {
         case main
     }
     
+    var filteredRepositories: String = ""
     private let repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
     private let searchController = UISearchController(searchResultsController: nil)
     private lazy var collectionView: UICollectionView = {

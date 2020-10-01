@@ -50,6 +50,7 @@ final class SearchViewController: UIViewController {
         view.addSubview(collectionView)
         title = "Search"
         applySnapshot(animatingDifferences: false)
+        
     }
     
 }
@@ -60,5 +61,9 @@ private extension SearchViewController {
         snapshot.appendItems(repositories)
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
+}
+extension SearchViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+  }
 }
 

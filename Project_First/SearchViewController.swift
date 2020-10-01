@@ -52,12 +52,7 @@ final class SearchViewController: UIViewController {
         view.addSubview(collectionView)
         title = "Search"
         applySnapshot(animatingDifferences: false)
-        
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search repository"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+        setupSearchController()
     }
     
 }
@@ -67,6 +62,13 @@ private extension SearchViewController {
         snapshot.appendSections(Section.allCases)
         snapshot.appendItems(repositories)
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
+    func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search repository"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 }
 extension SearchViewController: UISearchResultsUpdating {

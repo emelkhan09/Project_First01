@@ -20,6 +20,9 @@ final class SearchViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         let layout = UICollectionViewCompositionalLayout.list(using: config)
+        var isSearchBarEmpty: Bool {
+            return searchController.searchBar.text?.isEmpty ?? true
+        }
         
         let collectionView = UICollectionView(
             frame: view.bounds,

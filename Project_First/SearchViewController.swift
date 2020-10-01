@@ -15,9 +15,7 @@ final class SearchViewController: UIViewController {
     }
     
     private let repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
-    let searchController = UISearchController(searchResultsController: nil)
-    
-    
+    private let searchController = UISearchController(searchResultsController: nil)
     private lazy var collectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         let layout = UICollectionViewCompositionalLayout.list(using: config)
@@ -40,7 +38,6 @@ final class SearchViewController: UIViewController {
             cell.accessories = [.disclosureIndicator()]
         }
         
-        
         return UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView)
         { (collectionView, indexPath, repository) -> UICollectionViewCell? in
             collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: repository)
@@ -54,7 +51,6 @@ final class SearchViewController: UIViewController {
         applySnapshot(animatingDifferences: false)
         setupSearchController()
     }
-    
 }
 private extension SearchViewController {
     func applySnapshot(animatingDifferences: Bool = true) {
@@ -71,6 +67,7 @@ private extension SearchViewController {
         definesPresentationContext = true
     }
 }
+
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
     }

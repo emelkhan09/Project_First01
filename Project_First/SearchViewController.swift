@@ -53,7 +53,11 @@ final class SearchViewController: UIViewController {
         title = "Search"
         applySnapshot(animatingDifferences: false)
         
-        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search repository"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
 }

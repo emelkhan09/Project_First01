@@ -16,7 +16,7 @@ final class SearchViewController: UIViewController {
     
     private let repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
     let searchController = UISearchController(searchResultsController: nil)
-
+    
     
     private lazy var collectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -70,7 +70,7 @@ private extension SearchViewController {
     }
 }
 extension SearchViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-  }
+    func updateSearchResults(for searchController: UISearchController) {
+    }
 }
 

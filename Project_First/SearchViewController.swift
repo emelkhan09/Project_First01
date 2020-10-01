@@ -15,6 +15,8 @@ final class SearchViewController: UIViewController {
     }
     
     private let repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
+    let searchController = UISearchController(searchResultsController: nil)
+
     
     private lazy var collectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -50,6 +52,7 @@ final class SearchViewController: UIViewController {
         view.addSubview(collectionView)
         title = "Search"
         applySnapshot(animatingDifferences: false)
+        
         
     }
     

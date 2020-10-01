@@ -52,6 +52,7 @@ final class SearchViewController: UIViewController {
         setupSearchController()
     }
 }
+
 private extension SearchViewController {
     func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
@@ -59,6 +60,7 @@ private extension SearchViewController {
         snapshot.appendItems(repositories)
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
+    
     func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false

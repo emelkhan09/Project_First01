@@ -14,7 +14,6 @@ final class SearchViewController: UIViewController {
         case main
     }
     
-    var components = URLComponents()
     private let repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
     private let searchController = UISearchController(searchResultsController: nil)
     private lazy var collectionView: UICollectionView = {
@@ -48,12 +47,32 @@ final class SearchViewController: UIViewController {
         }
     }()
     
+    var components = URLComponents()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         title = "Search"
         applySnapshot(animatingDifferences: false)
         setupSearchController()
+        
+        components.scheme = "hhtps"
+        components.host = "api.github.com"
+        components.path = "/repositories?q=language:swift&sort=stars&order=desc"
+        
+        guard let url = components.url else {
+            preconditionFailure("Failed to constuct URL")
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) {
+            data, response, error in
+            
+            DispatchQueue.main.async {
+                if let data = data {
+                }
+            }
+        }
     }
 }
 

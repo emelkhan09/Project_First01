@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct Repository: Codable {
+    var name: String
+}

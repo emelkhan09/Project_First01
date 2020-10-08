@@ -12,6 +12,7 @@
 		5246289D251B70E400EA059F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246289C251B70E400EA059F /* SearchViewController.swift */; };
 		524628A2251B70E600EA059F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524628A1251B70E600EA059F /* Assets.xcassets */; };
 		524628A5251B70E600EA059F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524628A3251B70E600EA059F /* LaunchScreen.storyboard */; };
+		52DACE80252F078D00772143 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DACE7F252F078D00772143 /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		524628A1251B70E600EA059F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		524628A4251B70E600EA059F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		524628A6251B70E600EA059F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52DACE7F252F078D00772143 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				52462898251B70E400EA059F /* AppDelegate.swift */,
 				5246289A251B70E400EA059F /* SceneDelegate.swift */,
 				5246289C251B70E400EA059F /* SearchViewController.swift */,
+				52DACE7F252F078D00772143 /* Repository.swift */,
 				524628A1251B70E600EA059F /* Assets.xcassets */,
 				524628A3251B70E600EA059F /* LaunchScreen.storyboard */,
 				524628A6251B70E600EA059F /* Info.plist */,
@@ -137,6 +140,7 @@
 				5246289D251B70E400EA059F /* SearchViewController.swift in Sources */,
 				52462899251B70E400EA059F /* AppDelegate.swift in Sources */,
 				5246289B251B70E400EA059F /* SceneDelegate.swift in Sources */,
+				52DACE80252F078D00772143 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

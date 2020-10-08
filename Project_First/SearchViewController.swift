@@ -72,10 +72,6 @@ private extension SearchViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
-    
-    func filteredContent(collectionView: UICollectionView, cellForRowAt indexPath: IndexPath) -> UICollectionViewListCell {
-        let cell = collectionView.dequeueConfiguredReusableCell(using: dataSource <Cell, Item>, for: indexPath, item: repositories)
-    }
 }
 
 extension SearchViewController: UISearchResultsUpdating {

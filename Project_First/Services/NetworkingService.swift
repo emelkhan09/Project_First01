@@ -11,6 +11,7 @@ import Foundation
 
 struct NetworkingService: Hashable {
     
+    let session = URLSession.shared
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
     
@@ -25,19 +26,24 @@ struct NetworkingService: Hashable {
             preconditionFailure("Failed to constuct URL")
         }
         
-        let task = URLSession.shared.dataTask(with: url) {
-            data, response, error in
+        let task = session.dataTask(with: url) { data, response, error in
+            guard error == nil else {
+                print ("error: \(error!)")
+                return
+            }
+            guard let content = data else {
+                print("No data")
+                return
+            }
+            guard let json = (try? JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers)) as? [String: Any] else {
+                print("Not containing JSON")
+                return
+            }
+            print("gotten json response dictionary is \n \(json)")
+            
+            
         }
         task.resume()
-        
         return url
-        
-    }
-    
-    func <#name#>(<#parameters#>) -> <#return type#> {
-        <#function body#>
     }
 }
-
-
-

@@ -58,11 +58,11 @@
 		52462897251B70E400EA059F /* Project_First */ = {
 			isa = PBXGroup;
 			children = (
+				52DACE912535C73F00772143 /* Models */,
+				52DACE902535C72700772143 /* ViewControllers */,
 				52DACE8A25309B1B00772143 /* Services */,
 				52462898251B70E400EA059F /* AppDelegate.swift */,
 				5246289A251B70E400EA059F /* SceneDelegate.swift */,
-				5246289C251B70E400EA059F /* SearchViewController.swift */,
-				52DACE7F252F078D00772143 /* Repository.swift */,
 				524628A1251B70E600EA059F /* Assets.xcassets */,
 				524628A3251B70E600EA059F /* LaunchScreen.storyboard */,
 				524628A6251B70E600EA059F /* Info.plist */,
@@ -76,6 +76,22 @@
 				52DACE8C25309BBD00772143 /* NetworkingService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		52DACE902535C72700772143 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5246289C251B70E400EA059F /* SearchViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		52DACE912535C73F00772143 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52DACE7F252F078D00772143 /* Repository.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -53,6 +53,7 @@ final class SearchViewController: UIViewController {
         title = "Search"
         applySnapshot(animatingDifferences: false)
         setupSearchController()
+        print(NetworkingService())
     }
 }
 

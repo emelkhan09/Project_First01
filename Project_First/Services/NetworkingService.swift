@@ -27,22 +27,10 @@ struct NetworkingService: Hashable {
         }
         
         let task = session.dataTask(with: url) { data, response, error in
-            guard error == nil else {
-                print ("error: \(error!)")
-                return
-            }
-            guard let content = data else {
-                print("No data")
-                return
-            }
-            guard let json = (try? JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers)) as? [String: Any] else {
-                print("Not containing JSON")
-                return
-            }
-            print("gotten json response dictionary is \n \(json)")
-            
-            
+            guard let data = data else { return }
+            print(String(data: data, encoding: .utf8)!)
         }
+        
         task.resume()
         return url
     }

@@ -14,7 +14,7 @@ final class SearchViewController: UIViewController {
         case main
     }
     
-    private let repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
+    private let repositories : Array = [""]
     private let searchController = UISearchController(searchResultsController: nil)
     private lazy var collectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -53,7 +53,6 @@ final class SearchViewController: UIViewController {
         title = "Search"
         applySnapshot(animatingDifferences: false)
         setupSearchController()
-        print(NetworkingService())
     }
 }
 
@@ -78,4 +77,3 @@ extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
     }
 }
-

@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct Repository: Codable {
+struct Repository: Codable, Hashable {
     var name: String
 }

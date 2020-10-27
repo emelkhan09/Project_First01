@@ -27,8 +27,15 @@ struct NetworkingService: Hashable {
         }
         
         let task = session.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-            print(String(data: data, encoding: .utf8)!)
+            if error == nil && data != nil {
+                let decoder = JSONDecoder()
+                do {
+                    let repositaryArray = try decoder.decode(Repository.self, from: data!)
+                    print("This is JSON result \(repositaryArray)")
+                } catch {
+                    debugPrint("Error in JSON parsing")
+                }
+            }
         }
         
         task.resume()

@@ -14,11 +14,14 @@ final class SearchViewController: UIViewController {
         case main
     }
     
-    private let repositories = ["Alamofire", "Realm", "KingFisher", "SnapKit"]
-    
+    private let repositories : Array = [""]
+    private let searchController = UISearchController(searchResultsController: nil)
     private lazy var collectionView: UICollectionView = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         let layout = UICollectionViewCompositionalLayout.list(using: config)
+        var isSearchBarEmpty: Bool {
+            return searchController.searchBar.text?.isEmpty ?? true
+        }
         
         let collectionView = UICollectionView(
             frame: view.bounds,
@@ -38,7 +41,6 @@ final class SearchViewController: UIViewController {
             cell.accessories = [.disclosureIndicator()]
         }
         
-        
         return UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView)
         { (collectionView, indexPath, repository) -> UICollectionViewCell? in
             collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: repository)
@@ -50,9 +52,10 @@ final class SearchViewController: UIViewController {
         view.addSubview(collectionView)
         title = "Search"
         applySnapshot(animatingDifferences: false)
+        setupSearchController()
     }
-    
 }
+
 private extension SearchViewController {
     func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
@@ -60,5 +63,17 @@ private extension SearchViewController {
         snapshot.appendItems(repositories)
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
+    
+    func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search repository"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
 }
 
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+    }
+}
